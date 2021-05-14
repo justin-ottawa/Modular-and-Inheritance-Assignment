@@ -37,6 +37,17 @@ public class Shape {
 	protected void setShape(String newShape) {
 		this.shapeType = newShape;
 	}
+	protected double calcArea() {
+		return 0;
+	}
+	protected double calcPerim() {
+		return 0;
+	}
+	//Helper method
+	public void output() {
+		System.out.println("The area is " + calcArea());
+		System.out.println("The circumfrence is " + calcPerim());
+	}
 	//Main Method
 	public static void main(String[] args) {
 		//Instantiation for main method
@@ -45,6 +56,7 @@ public class Shape {
 		//used to kill the while loop
 		boolean key = true;
 		while(key) {
+			System.out.print("To end the loop, please enter \"exit\". ");
 			System.out.print("Please state the type of your shape (rectangle, triangle, circle): ");
 			String inputShape = in.next();
 			sh.setShape(inputShape);
@@ -69,9 +81,7 @@ public class Shape {
 				r.setWidth(inputValue_width);
 				//Calling helper method
 				r.output();
-				//Closing scanner / while loop / switch case
-				in.close();
-				key = false;
+				//Closing case
 				break;
 			//Triangle case
 			case "Triangle":
@@ -100,9 +110,7 @@ public class Shape {
 				t.setWidth(inputValue_b);
 				//Calling helper method
 				t.output();
-				//Closing scanner / while loop / switch case
-				in.close();
-				key = false;
+				//Closing case
 				break;
 			//Circle case
 			case "Circle":
@@ -119,7 +127,11 @@ public class Shape {
 				c.setRadius(inputValue_radius);
 				//Calling helper method
 				c.output();
-				//Closing Scanner / while loop / switch case
+				//Closing case
+				break;
+			//exit case
+			case "exit":
+				//Closing scanner, while loop, and switch
 				in.close();
 				key = false;
 				break;
@@ -144,11 +156,6 @@ class Rectangle extends Shape{
 		perimeter = (double)Math.round(perimeter*100d) / 100d;
 		return perimeter;
 	}
-	//Helper Method for rectangles
-	public void output() {
-		System.out.println("The area is " + calcArea());
-		System.out.println("The perimeter is " + calcPerim());
-	}
 }
 //Triangle Class
 class Triangle extends Shape{
@@ -164,11 +171,6 @@ class Triangle extends Shape{
 		perimeter = (double)Math.round(perimeter*100d) / 100d;
 		return perimeter;
 	}
-	//Helper Method for triangles
-	public void output() {
-		System.out.println("The area is " + calcArea());
-		System.out.println("The perimeter is " + calcPerim());
-	}
 }
 //Circle class
 class Circle extends Shape{
@@ -183,10 +185,5 @@ class Circle extends Shape{
 		double perimeter = 2 * this.PI * this.radius;
 		perimeter = (double)Math.round(perimeter*100d) / 100d;
 		return perimeter;
-	}
-	//Helper Method for circles
-	public void output() {
-		System.out.println("The area is " + calcArea());
-		System.out.println("The circumfrence is " + calcPerim());
 	}
 }
